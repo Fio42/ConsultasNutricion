@@ -221,10 +221,10 @@
     <!-- Photo right bleed -->
     <div class="hero-photo">
       <img
-        src="images/francisco-plesky.png"
+        src="images/francisco-plesky.jpg"
         alt="L.N. Francisco Plesky – Nutriólogo en su consultorio"
         loading="eager"
-        onerror="this.src='https://consultasnutricion.com.mx/wp-content/uploads/2024/12/WhatsApp-Image-2019-06-07-at-10.37.38-AM-768x1024.jpeg';this.onerror=null;"
+        onerror="this.style.opacity='0'"
       />
     </div>
 
@@ -361,11 +361,15 @@
       <!-- Dynamic panel -->
       <div class="reveal-r">
         <div id="bpanel" class="rounded-3xl overflow-hidden relative" style="height:370px;background:#171712;border:1px solid rgba(255,255,255,.06)">
-          <div id="bbg" class="absolute inset-0 transition-all duration-700" style="background:radial-gradient(ellipse at 50% 50%,rgba(85,122,76,.4) 0%,transparent 70%)"></div>
-          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-            <div id="bicon" class="text-6xl mb-5" style="transition:all .5s">🥦</div>
-            <h3 id="btitle" class="font-display font-bold text-white text-2xl mb-3" style="transition:all .5s">Mejora tu alimentación</h3>
-            <p id="bdesc"  class="text-sm leading-relaxed" style="color:rgba(255,255,255,.5);transition:all .5s">Hábitos sostenibles y basados en evidencia científica, adaptados a tu estilo de vida.</p>
+          <!-- Photo layer — changes with hover -->
+          <div id="bbg" class="absolute inset-0 transition-all duration-700 overflow-hidden">
+            <img id="bimg" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80&auto=format&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(.55);transition:all .6s cubic-bezier(.16,1,.3,1)" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 60%)"></div>
+          </div>
+          <div class="absolute inset-0 flex flex-col justify-end p-8 z-10">
+            <div id="bicon" class="text-3xl mb-3" style="transition:all .5s">🥦</div>
+            <h3 id="btitle" class="font-display font-bold text-white text-2xl mb-2" style="transition:all .4s">Mejora tu alimentación</h3>
+            <p id="bdesc"  class="text-sm leading-relaxed" style="color:rgba(255,255,255,.6);transition:all .4s">Hábitos sostenibles y basados en evidencia científica, adaptados a tu estilo de vida.</p>
           </div>
         </div>
       </div>
@@ -460,7 +464,7 @@
       <div class="reveal d1" style="border-radius:24px;overflow:hidden;background:#fff;border:1px solid rgba(0,0,0,.07);box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 55px rgba(0,0,0,.12)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(0,0,0,.06)'">
         <!-- Photo: split already in the image -->
         <div style="position:relative;overflow:hidden;aspect-ratio:1">
-          <img src="images/testi-maria.png" alt="Transformación María – Antes y Después" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" loading="lazy" />
+          <img src="images/testi-maria.jpg" alt="Transformación María – Antes y Después" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" loading="lazy" />
           <!-- Antes / Después labels -->
           <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);color:rgba(255,255,255,.9);font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:999px;text-transform:uppercase">Antes</span>
           <span style="position:absolute;bottom:10px;right:10px;background:#557a4c;color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:999px;text-transform:uppercase">Después</span>
@@ -484,7 +488,7 @@
       <!-- Roberto -->
       <div class="reveal d2" style="border-radius:24px;overflow:hidden;background:#fff;border:1px solid rgba(0,0,0,.07);box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 55px rgba(0,0,0,.12)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(0,0,0,.06)'">
         <div style="position:relative;overflow:hidden;aspect-ratio:1">
-          <img src="images/testi-roberto.png" alt="Transformación Roberto – Antes y Después" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" loading="lazy" />
+          <img src="images/testi-roberto.jpg" alt="Transformación Roberto – Antes y Después" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" loading="lazy" />
           <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);color:rgba(255,255,255,.9);font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:999px;text-transform:uppercase">Antes</span>
           <span style="position:absolute;bottom:10px;right:10px;background:#557a4c;color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:999px;text-transform:uppercase">Después</span>
           <div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,.5);transform:translateX(-50%)"></div>
@@ -505,7 +509,7 @@
       <!-- Luisa -->
       <div class="reveal d3" style="border-radius:24px;overflow:hidden;background:#fff;border:1px solid rgba(0,0,0,.07);box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 55px rgba(0,0,0,.12)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(0,0,0,.06)'">
         <div style="position:relative;overflow:hidden;aspect-ratio:1">
-          <img src="images/testi-luisa.png" alt="Transformación Luisa – Antes y Después" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" loading="lazy" />
+          <img src="images/testi-luisa.jpg" alt="Transformación Luisa – Antes y Después" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" loading="lazy" />
           <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);color:rgba(255,255,255,.9);font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:999px;text-transform:uppercase">Antes</span>
           <span style="position:absolute;bottom:10px;right:10px;background:#557a4c;color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:999px;text-transform:uppercase">Después</span>
           <div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,.5);transform:translateX(-50%)"></div>
@@ -559,7 +563,7 @@
       </div>
       <!-- Chat header -->
       <div class="flex items-center gap-3 px-5 py-4" style="border-bottom:1px solid #f2f5f0;background:#fff">
-        <img src="images/francisco-plesky.png" alt="Francisco Plesky" class="w-9 h-9 rounded-full object-cover object-top"
+        <img src="images/francisco-plesky.jpg" alt="Francisco Plesky" class="w-9 h-9 rounded-full object-cover object-top"
              onerror="this.outerHTML='<div style=\'width:36px;height:36px;border-radius:50%;background:#171712;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0\'>FP</div>'" />
         <div>
           <p class="font-semibold text-sm">Francisco Plesky</p>
@@ -572,7 +576,7 @@
         <!-- Q1 -->
         <div id="q1">
           <div class="flex gap-3 mb-5">
-            <img src="images/francisco-plesky.png" alt="" class="w-8 h-8 rounded-full object-cover object-top flex-shrink-0"
+            <img src="images/francisco-plesky.jpg" alt="" class="w-8 h-8 rounded-full object-cover object-top flex-shrink-0"
                  onerror="this.outerHTML='<div style=\'width:32px;height:32px;border-radius:50%;background:#171712;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0\'>FP</div>'" />
             <div class="rounded-2xl rounded-tl-none px-4 py-3" style="background:#f2f5f0;max-width:280px">
               <p class="text-sm">¡Hola! Soy Francisco. ¿Cuál es tu <strong>objetivo principal</strong>?</p>
@@ -588,7 +592,7 @@
         <!-- Q2 -->
         <div id="q2" class="hidden">
           <div class="flex gap-3 mb-5">
-            <img src="images/francisco-plesky.png" alt="" class="w-8 h-8 rounded-full object-cover object-top flex-shrink-0"
+            <img src="images/francisco-plesky.jpg" alt="" class="w-8 h-8 rounded-full object-cover object-top flex-shrink-0"
                  onerror="this.outerHTML='<div style=\'width:32px;height:32px;border-radius:50%;background:#171712;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0\'>FP</div>'" />
             <div class="rounded-2xl rounded-tl-none px-4 py-3" style="background:#f2f5f0;max-width:280px">
               <p class="text-sm">¿Qué nivel de <strong>acompañamiento</strong> quieres?</p>
@@ -603,7 +607,7 @@
         <!-- Q3 -->
         <div id="q3" class="hidden">
           <div class="flex gap-3 mb-5">
-            <img src="images/francisco-plesky.png" alt="" class="w-8 h-8 rounded-full object-cover object-top flex-shrink-0"
+            <img src="images/francisco-plesky.jpg" alt="" class="w-8 h-8 rounded-full object-cover object-top flex-shrink-0"
                  onerror="this.outerHTML='<div style=\'width:32px;height:32px;border-radius:50%;background:#171712;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0\'>FP</div>'" />
             <div class="rounded-2xl rounded-tl-none px-4 py-3" style="background:#f2f5f0;max-width:280px">
               <p class="text-sm">¿Qué <strong>intensidad</strong> prefieres?</p>
@@ -618,7 +622,7 @@
         <!-- Result -->
         <div id="qres" class="hidden">
           <div class="flex gap-3 mb-4">
-            <img src="images/francisco-plesky.png" alt="" class="w-8 h-8 rounded-full object-cover object-top flex-shrink-0"
+            <img src="images/francisco-plesky.jpg" alt="" class="w-8 h-8 rounded-full object-cover object-top flex-shrink-0"
                  onerror="this.outerHTML='<div style=\'width:32px;height:32px;border-radius:50%;background:#171712;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0\'>FP</div>'" />
             <div class="rounded-2xl rounded-tl-none px-4 py-3" style="background:#f2f5f0;max-width:280px">
               <p class="text-sm">¡Perfecto! Basándome en tus respuestas, te recomiendo:</p>
@@ -639,7 +643,7 @@
       <div class="reveal-l">
         <div class="relative">
           <div class="rounded-3xl overflow-hidden" style="aspect-ratio:4/5;max-width:400px">
-            <img src="images/francisco-plesky.png" alt="L.N. Francisco Plesky en su consultorio" class="w-full h-full object-cover object-top" />
+            <img src="images/francisco-plesky.jpg" alt="L.N. Francisco Plesky en su consultorio" class="w-full h-full object-cover object-top" />
           </div>
           <div class="absolute rounded-2xl p-4" style="bottom:-16px;right:-16px;background:#171712;border:1px solid rgba(255,255,255,.1);min-width:170px">
             <p class="text-xs uppercase tracking-wide mb-1" style="color:#557a4c;font-weight:600">Especialidad</p>
@@ -742,7 +746,9 @@
     </div>
     <div class="grid md:grid-cols-3 gap-7">
       <article class="card overflow-hidden reveal d1">
-        <div class="flex items-center justify-center text-6xl" style="height:180px;background:linear-gradient(135deg,#e2e9df,#f2f5f0)">🥗</div>
+        <div style="height:180px;overflow:hidden;background:#f2f5f0">
+          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop" alt="Dieta anti-inflamatoria" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+        </div>
         <div class="p-6">
           <span class="lbl text-xs mb-3 inline-flex">Nutrición</span>
           <h3 class="font-display font-bold text-lg mb-3 leading-tight">Dieta Anti-inflamatoria: ¿Qué comer para reducir la inflamación?</h3>
@@ -751,7 +757,9 @@
         </div>
       </article>
       <article class="card overflow-hidden reveal d2">
-        <div class="flex items-center justify-center text-6xl" style="height:180px;background:linear-gradient(135deg,#fdf8ec,#f9edcc)">💪</div>
+        <div style="height:180px;overflow:hidden;background:#f2f5f0">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80&auto=format&fit=crop" alt="Nutrición deportiva" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+        </div>
         <div class="p-6">
           <span class="lbl lbl-g text-xs mb-3 inline-flex">Deporte</span>
           <h3 class="font-display font-bold text-lg mb-3 leading-tight">Nutrición Deportiva: Cómo aumentar masa muscular con la dieta correcta</h3>
@@ -760,7 +768,9 @@
         </div>
       </article>
       <article class="card overflow-hidden reveal d3">
-        <div class="flex items-center justify-center text-6xl" style="height:180px;background:linear-gradient(135deg,#e2e9df,#f2f5f0)">⚖️</div>
+        <div style="height:180px;overflow:hidden;background:#f2f5f0">
+          <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80&auto=format&fit=crop" alt="Síndrome metabólico" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+        </div>
         <div class="p-6">
           <span class="lbl text-xs mb-3 inline-flex">Salud</span>
           <h3 class="font-display font-bold text-lg mb-3 leading-tight">Síndrome Metabólico: Diabetes, hipertensión y dislipidemias en tu dieta</h3>
@@ -973,13 +983,13 @@ window.addEventListener('scroll',runC,{passive:true});runC();
 
 /* Benefits panel */
 var BD=[
-  {icon:'🥦',title:'Mejora tu alimentación',desc:'Hábitos sostenibles y basados en evidencia científica, adaptados a tu estilo de vida.',bg:'rgba(85,122,76,.42)'},
-  {icon:'💪',title:'Aumenta tu fuerza y resistencia',desc:'Rutinas de entrenamiento incluidas en cada programa, ajustadas a tu nivel de condición física.',bg:'rgba(228,168,37,.38)'},
-  {icon:'🧠',title:'Salud mental y bienestar',desc:'Trabajamos tu relación con la comida y tu motivación diaria. No solo físico.',bg:'rgba(127,100,86,.32)'},
-  {icon:'✨',title:'Siéntete bien contigo mismo',desc:'Motivación continua y seguimiento real con asesorías personalizadas en cada etapa.',bg:'rgba(85,122,76,.32)'}
+  {icon:'🥗',title:'Mejora tu alimentación',desc:'Hábitos sostenibles y basados en evidencia científica, adaptados a tu estilo de vida.',img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80&auto=format&fit=crop'},
+  {icon:'🏋️',title:'Aumenta tu fuerza y resistencia',desc:'Rutinas de entrenamiento incluidas en cada programa, ajustadas a tu nivel de condición física.',img:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80&auto=format&fit=crop'},
+  {icon:'🧘',title:'Salud mental y bienestar',desc:'Trabajamos tu relación con la comida y tu motivación diaria. No solo físico.',img:'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80&auto=format&fit=crop'},
+  {icon:'✨',title:'Siéntete bien contigo mismo',desc:'Motivación continua y seguimiento real con asesorías personalizadas en cada etapa.',img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80&auto=format&fit=crop'}
 ];
-var bico=document.getElementById('bicon'),bttl=document.getElementById('btitle'),bdsc=document.getElementById('bdesc'),bbg=document.getElementById('bbg');
-function setBP(i){var d=BD[i];bico.textContent=d.icon;bttl.textContent=d.title;bdsc.textContent=d.desc;bbg.style.background='radial-gradient(ellipse at 50% 50%,'+d.bg+' 0%,transparent 70%)';}
+var bico=document.getElementById('bicon'),bttl=document.getElementById('btitle'),bdsc=document.getElementById('bdesc'),bim=document.getElementById('bimg');
+function setBP(i){var d=BD[i];bico.textContent=d.icon;bttl.textContent=d.title;bdsc.textContent=d.desc;if(bim){bim.style.opacity='0';setTimeout(function(){bim.src=d.img;bim.style.opacity='1';},150);}}
 [0,1,2,3].forEach(function(i){var r=document.getElementById('b'+i);if(!r)return;r.addEventListener('mouseenter',function(){setBP(i);});r.addEventListener('touchstart',function(){setBP(i);},{passive:true});});
 
 /* FAQ */
