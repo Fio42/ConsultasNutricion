@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L.N. Francisco Plesky – Nutriólogo en Playa del Carmen y Cancún</title>
+  <meta name="description" content="Licenciado en Nutrición Francisco Plesky. Especialista en nutrición deportiva y control de peso en Playa del Carmen y Cancún. Planes personalizados, asesorías online y presenciales." />
+  <meta name="keywords" content="nutriólogo playa del carmen, nutriólogo cancún, nutrición deportiva, bajar de peso, plan alimenticio, Francisco Plesky" />
+  <meta property="og:title" content="L.N. Francisco Plesky – Nutriólogo Especialista" />
+  <meta property="og:description" content="Planes de alimentación personalizados, rutinas de entrenamiento, seguimiento nutricional y asesorías online. Tu mejor versión empieza hoy." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://consultasnutricion.com.mx/" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage:    { 50:'#f4f7f4', 100:'#e6ede6', 200:'#cddccd', 300:'#aac4aa', 400:'#7fa57f', 500:'#5a875a', 600:'#456b45', 700:'#375537', 800:'#2d452d', 900:'#263926' },
+            sand:    { 50:'#fdf9f3', 100:'#f9f0e1', 200:'#f1dfc0', 300:'#e7c994', 400:'#daa95e', 500:'#c98d3a', 600:'#b3742e', 700:'#955b26', 800:'#7a4a23', 900:'#653e20' },
+            cream:   '#fdf8f0',
+            charcoal:'#1a1a1a',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #fdf8f0; color: #1a1a1a; overflow-x: hidden; }
+
+    /* Reveal animations */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* Stagger delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* Hero gradient background */
+    .hero-bg {
+      background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 40%, #3d6b3d 70%, #263926 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(90,135,90,0.3) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(201,141,58,0.15) 0%, transparent 50%);
+    }
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    /* Floating orb */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    /* Nav */
+    #navbar {
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(253,248,240,0.95) !important;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      backdrop-filter: blur(12px);
+    }
+    #navbar.scrolled .nav-logo { color: #2d452d !important; }
+    #navbar.scrolled .nav-link { color: #1a1a1a !important; }
+    #navbar.scrolled .nav-cta { background: #456b45 !important; color: white !important; }
+
+    /* Pill badge */
+    .pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(90,135,90,0.15); border: 1px solid rgba(90,135,90,0.3); color: #7fa57f; border-radius: 999px; padding: 6px 16px; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+    .pill-gold { background: rgba(201,141,58,0.15); border-color: rgba(201,141,58,0.3); color: #c98d3a; }
+
+    /* Card hover */
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+
+    /* Plan cards */
+    .plan-featured { position: relative; }
+    .plan-featured::before { content: 'MÁS POPULAR'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #c98d3a; color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; padding: 5px 18px; border-radius: 999px; }
+
+    /* Stat counter */
+    .stat-num { font-family: 'Playfair Display', serif; font-weight: 900; line-height: 1; }
+
+    /* Stars animation */
+    .star { display: inline-block; animation: starPop 0.4s ease both; }
+    @keyframes starPop {
+      0%   { transform: scale(0) rotate(-30deg); opacity: 0; }
+      70%  { transform: scale(1.2) rotate(5deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    /* FAQ accordion */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+    .faq-answer.open { max-height: 300px; }
+    .faq-icon { transition: transform 0.3s ease; }
+    .faq-icon.open { transform: rotate(45deg); }
+
+    /* Quiz */
+    .quiz-option { transition: all 0.2s ease; cursor: pointer; }
+    .quiz-option:hover { transform: translateX(4px); }
+    .quiz-option.selected { background: #456b45; color: white; border-color: #456b45; }
+
+    /* Progress bar */
+    .progress-fill { transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    /* WhatsApp float */
+    #wa-btn { animation: waPulse 2.5s infinite; }
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      50%       { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+    }
+
+    /* Button styles */
+    .btn-primary { background: #c98d3a; color: white; padding: 14px 32px; border-radius: 999px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; letter-spacing: 0.02em; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: #b3742e; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,141,58,0.35); }
+    .btn-secondary { background: transparent; color: white; padding: 14px 32px; border-radius: 999px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.4); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); transform: translateY(-2px); }
+    .btn-sage { background: #456b45; color: white; padding: 12px 28px; border-radius: 999px; font-weight: 600; font-size: 14px; transition: all 0.3s ease; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-sage:hover { background: #375537; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(69,107,69,0.3); }
+
+    /* Section divider */
+    .section-line { width: 48px; height: 3px; background: #c98d3a; border-radius: 2px; }
+
+    /* Gradient text */
+    .text-gradient { background: linear-gradient(135deg, #c98d3a, #daa95e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .text-gradient-sage { background: linear-gradient(135deg, #5a875a, #7fa57f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* Testimonial card */
+    .testimonial-card { background: white; border-radius: 20px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04); }
+
+    /* Blog card image placeholder */
+    .blog-img { height: 200px; border-radius: 12px 12px 0 0; object-fit: cover; width: 100%; }
+
+    /* Instagram grid item */
+    .ig-item { aspect-ratio: 1; border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; }
+    .ig-item::after { content: ''; position: absolute; inset: 0; background: rgba(26,46,26,0); transition: background 0.3s ease; }
+    .ig-item:hover::after { background: rgba(26,46,26,0.4); }
+
+    /* Form */
+    .form-input { width: 100%; background: white; border: 1.5px solid #e6ede6; border-radius: 12px; padding: 14px 18px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: #1a1a1a; transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; }
+    .form-input:focus { border-color: #5a875a; box-shadow: 0 0 0 3px rgba(90,135,90,0.1); }
+    .form-input::placeholder { color: #aac4aa; }
+
+    /* Mobile menu */
+    #mobile-menu { transition: max-height 0.4s ease, opacity 0.4s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+    /* Scroll indicator */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(8px); }
+    }
+    .scroll-bounce { animation: bounce 2s infinite; }
+
+    /* Hero image placeholder */
+    .hero-avatar {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, rgba(90,135,90,0.3) 0%, rgba(45,74,45,0.5) 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .hero-avatar { max-width: 280px; aspect-ratio: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ======================== NAVBAR ======================== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#inicio" class="nav-logo font-display font-bold text-xl text-white tracking-tight">
+      Francisco<span class="text-sand-400"> Plesky</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#planes"     class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors">Planes</a>
+      <a href="#sobre-mi"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors">Sobre mí</a>
+      <a href="#quiz"       class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors">Quiz</a>
+      <a href="#faq"        class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors">FAQ</a>
+      <a href="#contacto"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors">Contacto</a>
+      <a href="#planes" class="nav-cta btn-primary text-sm py-3 px-6">Empieza tu plan →</a>
+    </div>
+
+    <!-- Mobile burger -->
+    <button id="burger-btn" class="md:hidden text-white p-2" aria-label="Menú">
+      <svg id="burger-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden px-4 pb-4">
+    <div class="mt-4 rounded-2xl bg-sage-900/95 backdrop-blur-lg p-4 flex flex-col gap-2 border border-sage-700/30">
+      <a href="#planes"   class="text-white/80 hover:text-white py-3 px-4 rounded-xl hover:bg-sage-700/30 transition-all text-sm font-medium">Planes</a>
+      <a href="#sobre-mi" class="text-white/80 hover:text-white py-3 px-4 rounded-xl hover:bg-sage-700/30 transition-all text-sm font-medium">Sobre mí</a>
+      <a href="#quiz"     class="text-white/80 hover:text-white py-3 px-4 rounded-xl hover:bg-sage-700/30 transition-all text-sm font-medium">Quiz Personalizado</a>
+      <a href="#faq"      class="text-white/80 hover:text-white py-3 px-4 rounded-xl hover:bg-sage-700/30 transition-all text-sm font-medium">FAQ</a>
+      <a href="#contacto" class="text-white/80 hover:text-white py-3 px-4 rounded-xl hover:bg-sage-700/30 transition-all text-sm font-medium">Contacto</a>
+      <a href="#planes"   class="btn-primary justify-center mt-2">Empieza tu plan →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ======================== HERO ======================== -->
+<section id="inicio" class="hero-bg min-h-screen flex items-center relative pt-20">
+  <div class="hero-noise"></div>
+  <!-- Orbs -->
+  <div class="orb w-96 h-96 bg-sage-400/20 top-20 -right-20" style="position:absolute;"></div>
+  <div class="orb w-64 h-64 bg-sand-400/10 bottom-20 left-10" style="position:absolute;"></div>
+
+  <div class="max-w-6xl mx-auto px-6 py-20 relative z-10 w-full">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Text -->
+      <div>
+        <div class="pill mb-6 reveal">
+          <span>⚡</span> Playa del Carmen & Cancún · Online
+        </div>
+        <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6 reveal delay-1">
+          Tu mejor<br/>
+          <span class="text-gradient">versión</span><br/>
+          empieza hoy
+        </h1>
+        <p class="text-white/70 text-lg md:text-xl leading-relaxed mb-8 max-w-lg reveal delay-2">
+          Programas de 28 días con planes nutricionales personalizados, rutinas de entrenamientos, grupos de apoyo, seguimiento en línea y asesorías privadas.
+        </p>
+        <div class="flex flex-wrap gap-4 reveal delay-3">
+          <a href="#planes" class="btn-primary">Ver planes →</a>
+          <a href="#quiz"   class="btn-secondary">Encuentra tu plan</a>
+        </div>
+        <!-- Instagram CTA -->
+        <div class="mt-8 reveal delay-4">
+          <a href="https://www.instagram.com/consultasnutricion/" target="_blank" rel="noopener" class="inline-flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            ¿Vienes de Instagram? <span class="text-sand-400 font-semibold underline underline-offset-2">Empieza aquí</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero image -->
+      <div class="flex justify-center reveal-right delay-2">
+        <div class="hero-avatar">
+          <img
+            src="https://consultasnutricion.com.mx/wp-content/uploads/2024/12/WhatsApp-Image-2019-06-07-at-10.37.38-AM-768x1024.jpeg"
+            alt="L.N. Francisco Plesky – Nutriólogo"
+            class="w-full h-full object-cover object-top"
+            onerror="this.parentElement.innerHTML='<div class=\'flex flex-col items-center gap-4 p-8 text-center\'><div class=\'text-6xl\'>🥗</div><p class=\'text-white/60 text-sm\'>L.N. Francisco Plesky</p></div>'"
+          />
+          <!-- Badge overlay -->
+          <div class="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/20">
+            <p class="text-white font-semibold text-sm">L.N. Francisco Plesky</p>
+            <p class="text-white/60 text-xs">Nutriólogo Especialista · Playa del Carmen</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-bounce">
+      <span class="text-white/40 text-xs tracking-widest uppercase">Scroll</span>
+      <svg width="20" height="20" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== SOCIAL PROOF / STATS ======================== -->
+<section id="stats" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Stars banner -->
+    <div class="text-center mb-16 reveal">
+      <div class="inline-flex flex-col items-center gap-3">
+        <div id="stars-row" class="flex gap-1 text-2xl">
+          <span class="star" style="animation-delay:0.1s">⭐</span>
+          <span class="star" style="animation-delay:0.2s">⭐</span>
+          <span class="star" style="animation-delay:0.3s">⭐</span>
+          <span class="star" style="animation-delay:0.4s">⭐</span>
+          <span class="star" style="animation-delay:0.5s">⭐</span>
+        </div>
+        <p class="text-charcoal/50 text-sm font-medium tracking-wide uppercase">Pacientes satisfechos en Playa del Carmen, Cancún y todo el mundo</p>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="text-center reveal delay-1">
+        <div class="stat-num text-5xl md:text-6xl text-gradient-sage" data-target="6" data-suffix="+">0</div>
+        <p class="text-charcoal/60 text-sm mt-2 font-medium">Años de experiencia</p>
+      </div>
+      <div class="text-center reveal delay-2">
+        <div class="stat-num text-5xl md:text-6xl text-gradient-sage" data-target="28" data-suffix=" días">0</div>
+        <p class="text-charcoal/60 text-sm mt-2 font-medium">Duración del programa</p>
+      </div>
+      <div class="text-center reveal delay-3">
+        <div class="stat-num text-5xl md:text-6xl text-gradient-sage" data-target="100" data-suffix="%">0</div>
+        <p class="text-charcoal/60 text-sm mt-2 font-medium">Planes personalizados</p>
+      </div>
+      <div class="text-center reveal delay-4">
+        <div class="stat-num text-5xl md:text-6xl text-gradient-sage" data-target="2014" data-suffix="">0</div>
+        <p class="text-charcoal/60 text-sm mt-2 font-medium">Graduado LaSalle Cancún</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== ¿POR QUÉ EMPEZAR? ======================== -->
+<section id="beneficios" class="py-24" style="background:#f4f7f4;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div class="reveal-left">
+        <div class="pill pill-gold mb-5">¿Por qué cambiar?</div>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal leading-tight mb-6">
+          Descubre tu<br/>
+          <span class="text-gradient">verdadero potencial</span>
+        </h2>
+        <p class="text-charcoal/65 text-lg leading-relaxed mb-8">
+          Cada plan está diseñado exclusivamente para ti, comprendiendo que <strong>tu cuerpo es único</strong> y merece una atención personalizada. No postergues más tu cambio. ¡Tu mejor versión te está esperando!
+        </p>
+        <div class="space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0">🥦</div>
+            <div>
+              <p class="font-semibold text-charcoal text-sm">Mejora tu alimentación</p>
+              <p class="text-charcoal/50 text-sm">Hábitos sostenibles y basados en evidencia científica</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0">💪</div>
+            <div>
+              <p class="font-semibold text-charcoal text-sm">Aumenta tu fuerza y resistencia</p>
+              <p class="text-charcoal/50 text-sm">Rutinas de entrenamiento incluidas en cada programa</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0">🧠</div>
+            <div>
+              <p class="font-semibold text-charcoal text-sm">Salud mental</p>
+              <p class="text-charcoal/50 text-sm">Bienestar integral, no solo físico</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0">✨</div>
+            <div>
+              <p class="font-semibold text-charcoal text-sm">Siéntete bien contigo mismo</p>
+              <p class="text-charcoal/50 text-sm">Confianza y motivación continua con seguimiento real</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="grid grid-cols-2 gap-4 reveal-right">
+        <div class="bg-white rounded-2xl p-6 card-hover delay-1">
+          <div class="text-3xl mb-3">🍎</div>
+          <h3 class="font-semibold text-charcoal text-sm mb-1">Planes Alimenticios</h3>
+          <p class="text-charcoal/50 text-xs">Diseñados exclusivamente para tu cuerpo</p>
+        </div>
+        <div class="bg-sage-800 rounded-2xl p-6 card-hover delay-2">
+          <div class="text-3xl mb-3">🏋️</div>
+          <h3 class="font-semibold text-white text-sm mb-1">Rutinas de Entrenamiento</h3>
+          <p class="text-white/50 text-xs">Adaptadas a tu nivel y objetivos</p>
+        </div>
+        <div class="bg-sand-100 rounded-2xl p-6 card-hover delay-3">
+          <div class="text-3xl mb-3">📊</div>
+          <h3 class="font-semibold text-charcoal text-sm mb-1">Seguimiento Nutricional</h3>
+          <p class="text-charcoal/50 text-xs">Monitoreo constante de tu progreso</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 card-hover delay-4">
+          <div class="text-3xl mb-3">💬</div>
+          <h3 class="font-semibold text-charcoal text-sm mb-1">Asesorías en Línea</h3>
+          <p class="text-charcoal/50 text-xs">Desde cualquier parte del mundo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== PLANES ======================== -->
+<section id="planes" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="pill pill-gold mb-4 mx-auto inline-flex">Elige tu plan</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-4">
+        Planes que <span class="text-gradient">transforman</span>
+      </h2>
+      <p class="text-charcoal/55 text-lg max-w-xl mx-auto">Cada programa de 28 días incluye plan alimenticio, rutina de entrenamiento, seguimiento y asesoría privada.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+      <!-- Plan 1: Bajar de peso -->
+      <div class="bg-white rounded-3xl p-8 card-hover border border-sage-100 shadow-lg reveal-left">
+        <div class="w-14 h-14 rounded-2xl bg-sage-50 flex items-center justify-center text-2xl mb-5">🔥</div>
+        <h3 class="font-display text-2xl font-bold text-charcoal mb-2">Plan para Bajar de Peso</h3>
+        <div class="section-line mb-5"></div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-charcoal/70">
+            <span class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0 text-xs">✓</span>
+            Baja % de grasa corporal
+          </li>
+          <li class="flex items-center gap-3 text-sm text-charcoal/70">
+            <span class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0 text-xs">✓</span>
+            Control de peso efectivo
+          </li>
+          <li class="flex items-center gap-3 text-sm text-charcoal/70">
+            <span class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0 text-xs">✓</span>
+            Mejora de energía
+          </li>
+          <li class="flex items-center gap-3 text-sm text-charcoal/70">
+            <span class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0 text-xs">✓</span>
+            Programa de ejercicios incluido
+          </li>
+          <li class="flex items-center gap-3 text-sm text-charcoal/70">
+            <span class="w-5 h-5 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0 text-xs">✓</span>
+            Dieta Anti-inflamatoria
+          </li>
+        </ul>
+        <a href="https://consultasnutricion.com.mx/product/programa-2/" target="_blank" rel="noopener" class="btn-sage w-full justify-center">
+          Seleccionar plan →
+        </a>
+      </div>
+
+      <!-- Plan 2: Masa Muscular - Featured -->
+      <div class="rounded-3xl p-8 card-hover shadow-xl plan-featured reveal-right" style="background: linear-gradient(145deg, #1a2e1a, #2d4a2d);">
+        <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-2xl mb-5">💪</div>
+        <h3 class="font-display text-2xl font-bold text-white mb-2">Plan Aumento Muscular</h3>
+        <div class="w-12 h-0.5 bg-sand-400 mb-5"></div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-white/70">
+            <span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-sand-400 flex-shrink-0 text-xs">✓</span>
+            Aumenta masa muscular
+          </li>
+          <li class="flex items-center gap-3 text-sm text-white/70">
+            <span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-sand-400 flex-shrink-0 text-xs">✓</span>
+            Mejora de resistencia física
+          </li>
+          <li class="flex items-center gap-3 text-sm text-white/70">
+            <span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-sand-400 flex-shrink-0 text-xs">✓</span>
+            Recomendaciones en suplementación
+          </li>
+          <li class="flex items-center gap-3 text-sm text-white/70">
+            <span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-sand-400 flex-shrink-0 text-xs">✓</span>
+            Programa de ejercicios en el gimnasio
+          </li>
+          <li class="flex items-center gap-3 text-sm text-white/70">
+            <span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-sand-400 flex-shrink-0 text-xs">✓</span>
+            Dieta alta en proteínas
+          </li>
+        </ul>
+        <a href="https://consultasnutricion.com.mx/product/programa-aumenta-masa-muscular/" target="_blank" rel="noopener" class="btn-primary w-full justify-center">
+          Seleccionar plan →
+        </a>
+      </div>
+    </div>
+
+    <!-- Asesoría 1:1 callout -->
+    <div class="mt-12 rounded-3xl p-8 md:p-10 reveal" style="background: linear-gradient(135deg, #f9f0e1, #fdf8f0); border: 1px solid #e7c994;">
+      <div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+        <div class="text-5xl">🎯</div>
+        <div class="flex-1">
+          <h3 class="font-display text-2xl font-bold text-charcoal mb-2">Asesoría 1 a 1 — 100% Personalizada</h3>
+          <p class="text-charcoal/60">Consigue tu gran cambio a través de las asesorías online, estés donde estés. Cuentas conmigo en cada momento.</p>
+        </div>
+        <a href="https://consultasnutricion.com.mx/asesoria-personalizada/" target="_blank" rel="noopener" class="btn-primary flex-shrink-0">
+          Agendar asesoría →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== TESTIMONIALS ======================== -->
+<section id="testimonios" class="py-24" style="background:#f4f7f4;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="pill mb-4 mx-auto inline-flex">Testimoniales</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-4">
+        Ellos ya <span class="text-gradient">lo lograron</span>
+      </h2>
+      <p class="text-charcoal/55 text-lg max-w-xl mx-auto">Resultados reales de pacientes que confiaron en el proceso.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="testimonial-card card-hover reveal delay-1">
+        <div class="flex gap-0.5 mb-4">
+          <span class="text-sand-500 text-lg">★★★★★</span>
+        </div>
+        <p class="text-charcoal/70 text-sm leading-relaxed mb-5">"En menos de 4 semanas noté cambios increíbles en mi energía y composición corporal. El seguimiento constante de Francisco hace toda la diferencia."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 font-bold text-sm">M</div>
+          <div>
+            <p class="font-semibold text-charcoal text-sm">María G.</p>
+            <p class="text-charcoal/40 text-xs">Playa del Carmen</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card card-hover reveal delay-2">
+        <div class="flex gap-0.5 mb-4">
+          <span class="text-sand-500 text-lg">★★★★★</span>
+        </div>
+        <p class="text-charcoal/70 text-sm leading-relaxed mb-5">"El plan de aumento muscular es exactamente lo que necesitaba. La dieta alta en proteínas y las rutinas del gimnasio funcionaron perfectamente juntas."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-sand-100 flex items-center justify-center text-sand-600 font-bold text-sm">R</div>
+          <div>
+            <p class="font-semibold text-charcoal text-sm">Roberto A.</p>
+            <p class="text-charcoal/40 text-xs">Cancún</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card card-hover reveal delay-3">
+        <div class="flex gap-0.5 mb-4">
+          <span class="text-sand-500 text-lg">★★★★★</span>
+        </div>
+        <p class="text-charcoal/70 text-sm leading-relaxed mb-5">"Las asesorías online me permitieron llevar el programa desde cualquier lugar. La atención es muy personalizada y los resultados hablan solos."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-sage-100 flex items-center justify-center text-sage-600 font-bold text-sm">L</div>
+          <div>
+            <p class="font-semibold text-charcoal text-sm">Luisa P.</p>
+            <p class="text-charcoal/40 text-xs">Ciudad de México</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== QUIZ ======================== -->
+<section id="quiz" class="py-24 bg-white">
+  <div class="max-w-2xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="pill pill-gold mb-4 mx-auto inline-flex">🤖 Asistente Nutricional</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-4">
+        Encuentra tu <span class="text-gradient">plan ideal</span>
+      </h2>
+      <p class="text-charcoal/55 text-lg">Responde 3 preguntas y te recomendaremos el programa perfecto para ti.</p>
+    </div>
+
+    <!-- Quiz card -->
+    <div id="quiz-card" class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-sage-100 reveal">
+      <!-- Progress bar -->
+      <div class="h-1.5 bg-sage-50">
+        <div id="quiz-progress" class="progress-fill h-full bg-gradient-to-r from-sage-500 to-sand-500 rounded-full" style="width: 33%"></div>
+      </div>
+
+      <!-- Chat header -->
+      <div class="flex items-center gap-3 p-5 border-b border-sage-50">
+        <div class="w-10 h-10 rounded-full bg-sage-800 flex items-center justify-center text-white font-bold text-sm">FP</div>
+        <div>
+          <p class="font-semibold text-charcoal text-sm">Francisco Plesky</p>
+          <p class="text-sage-500 text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-sage-500 inline-block"></span> En línea ahora</p>
+        </div>
+        <div id="quiz-step-label" class="ml-auto text-xs text-charcoal/40 font-medium">Paso 1 de 3</div>
+      </div>
+
+      <!-- Chat body -->
+      <div id="quiz-body" class="p-6 min-h-64">
+        <!-- Question 1 -->
+        <div id="q1" class="quiz-step">
+          <div class="flex gap-3 mb-6">
+            <div class="w-8 h-8 rounded-full bg-sage-800 flex items-center justify-center text-white text-xs flex-shrink-0">FP</div>
+            <div class="bg-sage-50 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs">
+              <p class="text-charcoal text-sm leading-relaxed">¡Hola! Soy Francisco. ¿Cuál es tu <strong>objetivo principal</strong>?</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 ml-11">
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-3 text-sm text-left hover:border-sage-400" data-q="1" data-val="perder-peso">
+              <span class="text-xl block mb-1">🔥</span>
+              <span class="font-medium text-charcoal">Perder peso</span>
+            </button>
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-3 text-sm text-left hover:border-sage-400" data-q="1" data-val="ganar-musculo">
+              <span class="text-xl block mb-1">💪</span>
+              <span class="font-medium text-charcoal">Ganar músculo</span>
+            </button>
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-3 text-sm text-left hover:border-sage-400" data-q="1" data-val="mejorar-salud">
+              <span class="text-xl block mb-1">❤️</span>
+              <span class="font-medium text-charcoal">Mejorar salud</span>
+            </button>
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-3 text-sm text-left hover:border-sage-400" data-q="1" data-val="plan-personalizado">
+              <span class="text-xl block mb-1">🎯</span>
+              <span class="font-medium text-charcoal">Plan personalizado</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 2 (hidden) -->
+        <div id="q2" class="quiz-step hidden">
+          <div class="flex gap-3 mb-6">
+            <div class="w-8 h-8 rounded-full bg-sage-800 flex items-center justify-center text-white text-xs flex-shrink-0">FP</div>
+            <div class="bg-sage-50 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs">
+              <p class="text-charcoal text-sm leading-relaxed">¿Qué nivel de <strong>acompañamiento</strong> quieres?</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 gap-3 ml-11">
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-4 text-sm text-left hover:border-sage-400 flex items-center gap-3" data-q="2" data-val="solo-dieta">
+              <span class="text-xl">🥗</span>
+              <div><span class="font-medium text-charcoal block">Solo dieta</span><span class="text-charcoal/50 text-xs">Plan alimenticio personalizado</span></div>
+            </button>
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-4 text-sm text-left hover:border-sage-400 flex items-center gap-3" data-q="2" data-val="dieta-seguimiento">
+              <span class="text-xl">📊</span>
+              <div><span class="font-medium text-charcoal block">Dieta + seguimiento</span><span class="text-charcoal/50 text-xs">Plan + monitoreo de progreso</span></div>
+            </button>
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-4 text-sm text-left hover:border-sage-400 flex items-center gap-3" data-q="2" data-val="coaching-completo">
+              <span class="text-xl">🏆</span>
+              <div><span class="font-medium text-charcoal block">Coaching completo</span><span class="text-charcoal/50 text-xs">Plan + seguimiento + asesoría privada</span></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 3 (hidden) -->
+        <div id="q3" class="quiz-step hidden">
+          <div class="flex gap-3 mb-6">
+            <div class="w-8 h-8 rounded-full bg-sage-800 flex items-center justify-center text-white text-xs flex-shrink-0">FP</div>
+            <div class="bg-sage-50 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs">
+              <p class="text-charcoal text-sm leading-relaxed">¿Qué <strong>intensidad</strong> prefieres?</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-3 ml-11">
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-4 text-sm text-center hover:border-sage-400" data-q="3" data-val="suave">
+              <span class="text-2xl block mb-2">🌿</span>
+              <span class="font-medium text-charcoal block">Suave</span>
+              <span class="text-charcoal/40 text-xs">Gradual</span>
+            </button>
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-4 text-sm text-center hover:border-sage-400" data-q="3" data-val="moderado">
+              <span class="text-2xl block mb-2">⚡</span>
+              <span class="font-medium text-charcoal block">Moderado</span>
+              <span class="text-charcoal/40 text-xs">Equilibrado</span>
+            </button>
+            <button class="quiz-option border-2 border-sage-100 rounded-2xl p-4 text-sm text-center hover:border-sage-400" data-q="3" data-val="intensivo">
+              <span class="text-2xl block mb-2">🚀</span>
+              <span class="font-medium text-charcoal block">Intensivo</span>
+              <span class="text-charcoal/40 text-xs">Máximo</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Result (hidden) -->
+        <div id="q-result" class="quiz-step hidden">
+          <div class="flex gap-3 mb-5">
+            <div class="w-8 h-8 rounded-full bg-sage-800 flex items-center justify-center text-white text-xs flex-shrink-0">FP</div>
+            <div class="bg-sage-50 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs">
+              <p class="text-charcoal text-sm">¡Perfecto! Basándome en tus respuestas, te recomiendo:</p>
+            </div>
+          </div>
+          <div id="quiz-recommendation" class="ml-11 rounded-2xl overflow-hidden border border-sage-100">
+            <!-- filled by JS -->
+          </div>
+          <div class="ml-11 mt-4">
+            <button id="quiz-restart" class="text-xs text-charcoal/40 hover:text-charcoal underline transition-colors">↺ Reiniciar quiz</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== SOBRE MÍ ======================== -->
+<section id="sobre-mi" class="py-24" style="background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 100%);">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <!-- Image placeholder -->
+      <div class="reveal-left">
+        <div class="rounded-3xl overflow-hidden bg-sage-700/30 border border-sage-600/30" style="aspect-ratio:4/5; max-width:400px;">
+          <img
+            src="https://consultasnutricion.com.mx/wp-content/uploads/2021/07/2021-05-23.png"
+            alt="L.N. Francisco Plesky"
+            class="w-full h-full object-cover"
+            onerror="this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.style.display='none'; this.parentElement.innerHTML='<div style=\'text-align:center;padding:40px;\'><div style=\'font-size:80px;\'>👨‍⚕️</div><p style=\'color:rgba(255,255,255,0.5);margin-top:16px;\'>L.N. Francisco Plesky</p></div>';"
+          />
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="reveal-right">
+        <div class="pill mb-5" style="background:rgba(90,135,90,0.2);border-color:rgba(90,135,90,0.4);color:#aac4aa;">Sobre mí</div>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+          L.N. Francisco<br/><span class="text-gradient">Plesky</span>
+        </h2>
+        <p class="text-white/65 leading-relaxed mb-6">
+          Hola, soy <strong class="text-white">Licenciado en Nutrición</strong>, graduado de la <em>Universidad LaSalle Cancún</em> (2010–2014). Con experiencia de 1 año en el hospital IMSS 18 (2015) y actualmente con <strong class="text-white">más de 6 años de experiencia</strong> en Playa del Carmen dando consultas presenciales y en línea con pacientes de todas partes del mundo.
+        </p>
+        <p class="text-white/65 leading-relaxed mb-8">
+          Estudié la <strong class="text-white">Especialidad en Nutrición Deportiva</strong> en la <em>Universidad de Buenos Aires</em>. Te ayudaré a mejorar tu composición corporal (aumento masa magra y disminución masa grasa) y también trabajo con planes para pacientes con Síndrome metabólico (hipertensión, dislipidemias, diabetes y obesidad).
+        </p>
+
+        <!-- Credentials -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          <div class="rounded-2xl p-4" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">
+            <p class="text-sand-400 text-xs font-semibold uppercase tracking-wide mb-1">Especialidad</p>
+            <p class="text-white text-sm">Nutrición Deportiva<br/><span class="text-white/50 text-xs">Univ. Buenos Aires</span></p>
+          </div>
+          <div class="rounded-2xl p-4" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">
+            <p class="text-sand-400 text-xs font-semibold uppercase tracking-wide mb-1">Licenciatura</p>
+            <p class="text-white text-sm">Nutrición<br/><span class="text-white/50 text-xs">LaSalle Cancún, 2014</span></p>
+          </div>
+          <div class="rounded-2xl p-4" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">
+            <p class="text-sand-400 text-xs font-semibold uppercase tracking-wide mb-1">Ubicación</p>
+            <p class="text-white text-sm">Playa del Carmen<br/><span class="text-white/50 text-xs">Quintana Roo, México</span></p>
+          </div>
+          <div class="rounded-2xl p-4" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">
+            <p class="text-sand-400 text-xs font-semibold uppercase tracking-wide mb-1">Atención</p>
+            <p class="text-white text-sm">Online & Presencial<br/><span class="text-white/50 text-xs">Lun – Sab 8:00–18:00</span></p>
+          </div>
+        </div>
+
+        <a href="https://consultasnutricion.com.mx/asesoria-personalizada/" target="_blank" rel="noopener" class="btn-primary">
+          Agendar asesoría →
+        </a>
+      </div>
+    </div>
+
+    <!-- Vision / Mision / Filosofia -->
+    <div class="grid md:grid-cols-3 gap-6 mt-16">
+      <div class="rounded-2xl p-6 reveal delay-1" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);">
+        <div class="text-2xl mb-3">🎯</div>
+        <h3 class="text-white font-semibold text-sm mb-2 uppercase tracking-wide">Visión</h3>
+        <p class="text-white/55 text-sm leading-relaxed">Facilitar el camino de mis pacientes brindándoles herramientas y conocimiento científico para que alcancen su mejor potencial y una versión más saludable en todos los aspectos.</p>
+      </div>
+      <div class="rounded-2xl p-6 reveal delay-2" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);">
+        <div class="text-2xl mb-3">❤️</div>
+        <h3 class="text-white font-semibold text-sm mb-2 uppercase tracking-wide">Misión</h3>
+        <p class="text-white/55 text-sm leading-relaxed">Mejorar la calidad de vida de mis pacientes para que a través de la nutrición logren un mejor entendimiento del cuerpo humano y le saquen el mejor provecho posible.</p>
+      </div>
+      <div class="rounded-2xl p-6 reveal delay-3" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);">
+        <div class="text-2xl mb-3">🔬</div>
+        <h3 class="text-white font-semibold text-sm mb-2 uppercase tracking-wide">Filosofía</h3>
+        <p class="text-white/55 text-sm leading-relaxed">Siempre accionar de la mano de la verdad y la confianza hacia mis pacientes. Estar a la vanguardia en cuestión nutricional transmitiendo la mejor evidencia científica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== INSTAGRAM CTA ======================== -->
+<section id="instagram" class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="rounded-3xl p-10 text-center reveal" style="background: linear-gradient(135deg, #f9f0e1, #fdf8f0); border: 1px solid #e7c994;">
+      <div class="text-5xl mb-5">📸</div>
+      <div class="pill pill-gold mx-auto inline-flex mb-5">Instagram</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-charcoal mb-4">
+        ¿Vienes de Instagram? <br/><span class="text-gradient">Empieza aquí</span>
+      </h2>
+      <p class="text-charcoal/60 mb-8 max-w-lg mx-auto">Síguenos para recibir tips de nutrición, recetas saludables y actualizaciones de nuestros programas.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://www.instagram.com/consultasnutricion/" target="_blank" rel="noopener" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Seguir en Instagram
+        </a>
+        <a href="#planes" class="btn-sage">Ver planes →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== BLOG ======================== -->
+<section id="blog" class="py-24" style="background:#f4f7f4;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="pill mb-4 mx-auto inline-flex">Blog de Nutrición</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-4">
+        Conocimiento que <span class="text-gradient">transforma</span>
+      </h2>
+      <p class="text-charcoal/55 text-lg max-w-xl mx-auto">Artículos basados en evidencia científica para que tomes mejores decisiones sobre tu salud.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Article 1 -->
+      <article class="bg-white rounded-3xl overflow-hidden card-hover shadow-sm reveal delay-1">
+        <div class="h-48 bg-gradient-to-br from-sage-100 to-sage-200 flex items-center justify-center text-6xl">🥗</div>
+        <div class="p-6">
+          <span class="pill text-xs mb-3 inline-flex">Nutrición</span>
+          <h3 class="font-display text-xl font-bold text-charcoal mb-3 leading-tight">Dieta Anti-inflamatoria: ¿Qué comer para reducir la inflamación?</h3>
+          <p class="text-charcoal/55 text-sm leading-relaxed mb-5">Descubre qué alimentos tienen propiedades anti-inflamatorias y cómo incorporarlos en tu alimentación diaria para mejorar tu salud.</p>
+          <a href="https://consultasnutricion.com.mx/blog/" target="_blank" rel="noopener" class="text-sage-600 font-semibold text-sm hover:text-sage-800 transition-colors flex items-center gap-1">
+            Leer más <span>→</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="bg-white rounded-3xl overflow-hidden card-hover shadow-sm reveal delay-2">
+        <div class="h-48 bg-gradient-to-br from-sand-100 to-sand-200 flex items-center justify-center text-6xl">💪</div>
+        <div class="p-6">
+          <span class="pill pill-gold text-xs mb-3 inline-flex">Deporte</span>
+          <h3 class="font-display text-xl font-bold text-charcoal mb-3 leading-tight">Nutrición Deportiva: Cómo aumentar masa muscular con la dieta correcta</h3>
+          <p class="text-charcoal/55 text-sm leading-relaxed mb-5">La proteína es fundamental, pero no es el único nutriente importante. Aprende la ciencia detrás del aumento de masa muscular.</p>
+          <a href="https://consultasnutricion.com.mx/blog/" target="_blank" rel="noopener" class="text-sage-600 font-semibold text-sm hover:text-sage-800 transition-colors flex items-center gap-1">
+            Leer más <span>→</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="bg-white rounded-3xl overflow-hidden card-hover shadow-sm reveal delay-3">
+        <div class="h-48 bg-gradient-to-br from-sage-50 to-sage-100 flex items-center justify-center text-6xl">⚖️</div>
+        <div class="p-6">
+          <span class="pill text-xs mb-3 inline-flex">Peso</span>
+          <h3 class="font-display text-xl font-bold text-charcoal mb-3 leading-tight">Síndrome Metabólico: Diabetes, hipertensión y dislipidemias en tu dieta</h3>
+          <p class="text-charcoal/55 text-sm leading-relaxed mb-5">Cómo la alimentación puede ser tu mejor medicina para manejar el síndrome metabólico y mejorar tu calidad de vida.</p>
+          <a href="https://consultasnutricion.com.mx/blog/" target="_blank" rel="noopener" class="text-sage-600 font-semibold text-sm hover:text-sage-800 transition-colors flex items-center gap-1">
+            Leer más <span>→</span>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <div class="text-center mt-10 reveal">
+      <a href="https://consultasnutricion.com.mx/blog/" target="_blank" rel="noopener" class="btn-sage">
+        Ver todos los artículos →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FAQ ======================== -->
+<section id="faq" class="py-24 bg-white">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="pill mb-4 mx-auto inline-flex">Preguntas frecuentes</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-4">
+        Todo lo que <span class="text-gradient">necesitas saber</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3" id="faq-list">
+      <!-- FAQ items filled here -->
+    </div>
+  </div>
+</section>
+
+<!-- ======================== CONTACTO ======================== -->
+<section id="contacto" class="py-24" style="background:#f4f7f4;">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+      <!-- Info -->
+      <div class="reveal-left">
+        <div class="pill mb-5 inline-flex">Contacto</div>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-6">
+          ¿Tienes dudas?<br/><span class="text-gradient">Contáctanos</span>
+        </h2>
+        <p class="text-charcoal/60 text-lg leading-relaxed mb-10">Estamos aquí para ayudarte. Escríbenos y con gusto resolveremos todas tus preguntas sobre nuestros programas.</p>
+
+        <div class="space-y-5">
+          <div class="flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0">📞</div>
+            <div>
+              <p class="text-charcoal/40 text-xs uppercase tracking-wide font-medium mb-0.5">Teléfono / WhatsApp</p>
+              <a href="https://wa.me/5219841984819" target="_blank" rel="noopener" class="text-charcoal font-semibold hover:text-sage-600 transition-colors">+52 1 984 198 4819</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0">📍</div>
+            <div>
+              <p class="text-charcoal/40 text-xs uppercase tracking-wide font-medium mb-0.5">Ubicación</p>
+              <p class="text-charcoal font-semibold">Playa del Carmen, Quintana Roo</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-sage-100 flex items-center justify-center text-sage-600 flex-shrink-0">🕐</div>
+            <div>
+              <p class="text-charcoal/40 text-xs uppercase tracking-wide font-medium mb-0.5">Horario</p>
+              <p class="text-charcoal font-semibold">Lun – Sab  8:00 – 18:00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social links -->
+        <div class="flex gap-3 mt-10">
+          <a href="https://www.facebook.com/NutriologoFranciscoPlesky" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-sage-100 flex items-center justify-center text-sage-600 hover:bg-sage-200 transition-colors" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://twitter.com/ConsultasNut" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-sage-100 flex items-center justify-center text-sage-600 hover:bg-sage-200 transition-colors" aria-label="Twitter/X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/ln-francisco-plesky-0a3565145/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-sage-100 flex items-center justify-center text-sage-600 hover:bg-sage-200 transition-colors" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UC2BS7zZnHeWZKBsSorpdQHA" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-sage-100 flex items-center justify-center text-sage-600 hover:bg-sage-200 transition-colors" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.41 19.1C5.12 19.56 12 19.56 12 19.56s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95 29 29 0 00.46-5.29 29 29 0 00-.46-5.44z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="bg-white rounded-3xl p-8 shadow-sm border border-sage-100 reveal-right">
+        <h3 class="font-display text-2xl font-bold text-charcoal mb-6">Envíanos un mensaje</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-charcoal/70 mb-2">Nombre completo</label>
+            <input type="text" id="contact-name" class="form-input" placeholder="Tu nombre" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-charcoal/70 mb-2">Correo electrónico</label>
+            <input type="email" id="contact-email" class="form-input" placeholder="tu@correo.com" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-charcoal/70 mb-2">Mensaje</label>
+            <textarea id="contact-message" class="form-input" rows="4" placeholder="¿En qué te podemos ayudar?"></textarea>
+          </div>
+          <button id="contact-submit" type="button" class="btn-primary w-full justify-center">
+            Enviar por WhatsApp →
+          </button>
+          <p class="text-center text-xs text-charcoal/35">Al enviar, serás redirigido a WhatsApp con tu mensaje.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FOOTER ======================== -->
+<footer style="background: #0f1f0f;" class="py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <p class="font-display text-2xl font-bold text-white mb-3">Francisco<span class="text-sand-400"> Plesky</span></p>
+        <p class="text-white/50 text-sm leading-relaxed max-w-xs mb-6">Especialista de Nutrición deportiva y control de peso en Playa del Carmen y Cancún. Tratamientos y dietas para sobrepeso, obesidad y enfermedades crónicas.</p>
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/NutriologoFranciscoPlesky" target="_blank" rel="noopener" aria-label="Facebook" class="w-9 h-9 rounded-lg flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://twitter.com/ConsultasNut" target="_blank" rel="noopener" aria-label="Twitter" class="w-9 h-9 rounded-lg flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/consultasnutricion/" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 rounded-lg flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/ln-francisco-plesky-0a3565145/" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-9 h-9 rounded-lg flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UC2BS7zZnHeWZKBsSorpdQHA" target="_blank" rel="noopener" aria-label="YouTube" class="w-9 h-9 rounded-lg flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.41 19.1C5.12 19.56 12 19.56 12 19.56s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95 29 29 0 00.46-5.29 29 29 0 00-.46-5.44z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0f1f0f"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wide">Navegación</h4>
+        <ul class="space-y-2">
+          <li><a href="#inicio"     class="text-white/50 hover:text-white text-sm transition-colors">Inicio</a></li>
+          <li><a href="#planes"     class="text-white/50 hover:text-white text-sm transition-colors">Planes Alimenticios</a></li>
+          <li><a href="#quiz"       class="text-white/50 hover:text-white text-sm transition-colors">Quiz Nutricional</a></li>
+          <li><a href="#sobre-mi"   class="text-white/50 hover:text-white text-sm transition-colors">Sobre mí</a></li>
+          <li><a href="#blog"       class="text-white/50 hover:text-white text-sm transition-colors">Blog</a></li>
+          <li><a href="#contacto"   class="text-white/50 hover:text-white text-sm transition-colors">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wide">Contacto</h4>
+        <ul class="space-y-2">
+          <li><a href="https://wa.me/5219841984819" target="_blank" rel="noopener" class="text-white/50 hover:text-white text-sm transition-colors">+52 1 984 198 4819</a></li>
+          <li><p class="text-white/50 text-sm">Playa del Carmen, Q. Roo</p></li>
+          <li><p class="text-white/50 text-sm">Lun – Sab  8:00 – 18:00</p></li>
+          <li class="pt-3">
+            <a href="https://consultasnutricion.com.mx/asesoria-personalizada/" target="_blank" rel="noopener" class="btn-primary text-xs py-2 px-4">Agendar asesoría →</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-white/30 text-xs">© 2024 Consultas de Nutrición · L.N. Francisco Plesky. Todos los derechos reservados.</p>
+      <div class="flex gap-5">
+        <a href="https://consultasnutricion.com.mx/privacy-policy/" target="_blank" rel="noopener" class="text-white/30 hover:text-white/60 text-xs transition-colors">Políticas de Privacidad</a>
+        <a href="https://consultasnutricion.com.mx/terminos-y-condiciones/"  target="_blank" rel="noopener" class="text-white/30 hover:text-white/60 text-xs transition-colors">Términos y Condiciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ======================== WHATSAPP FLOAT ======================== -->
+<a id="wa-btn" href="https://wa.me/5219841984819?text=Hola%20Francisco%2C%20me%20interesa%20información%20sobre%20los%20planes%20de%20nutrición" target="_blank" rel="noopener" aria-label="WhatsApp"
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
+   style="background:#25D366;">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ======================== JAVASCRIPT ======================== -->
+<script>
+(function() {
+  'use strict';
+
+  /* ---- Navbar scroll effect ---- */
+  var navbar = document.getElementById('navbar');
+  function onScroll() {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Mobile burger ---- */
+  var burgerBtn  = document.getElementById('burger-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  burgerBtn.addEventListener('click', function() {
+    var isOpen = mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open', !isOpen);
+  });
+  // Close on link click
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  /* ---- Intersection Observer: scroll reveal ---- */
+  var revealClasses = ['.reveal', '.reveal-left', '.reveal-right', '.reveal-scale'];
+  var allReveal = document.querySelectorAll(revealClasses.join(','));
+
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  allReveal.forEach(function(el) { revealObserver.observe(el); });
+
+  /* ---- Animated counters ---- */
+  var counters = document.querySelectorAll('[data-target]');
+  var countersDone = false;
+
+  function animateCounters() {
+    if (countersDone) { return; }
+    var section = document.getElementById('stats');
+    if (!section) { return; }
+    var rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) {
+      countersDone = true;
+      counters.forEach(function(el) {
+        var target  = parseInt(el.getAttribute('data-target'), 10);
+        var suffix  = el.getAttribute('data-suffix') || '';
+        var start   = 0;
+        var duration = 1800;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) { startTime = timestamp; }
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var ease = 1 - Math.pow(1 - progress, 3);
+          var current = Math.floor(ease * target);
+          el.textContent = current + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = target + suffix;
+          }
+        }
+        requestAnimationFrame(step);
+      });
+    }
+  }
+  window.addEventListener('scroll', animateCounters, { passive: true });
+  animateCounters();
+
+  /* ---- FAQ Accordion ---- */
+  var faqData = [
+    {
+      q: '¿Qué incluye el programa de nutrición?',
+      a: 'El programa incluye una evaluación inicial, un plan de alimentación personalizado, seguimiento continuo y asesoría para alcanzar tus objetivos. También incluye rutina de entrenamientos y grupos de apoyo.'
+    },
+    {
+      q: '¿Cómo se personaliza el plan de alimentación?',
+      a: 'Se adapta según tus objetivos, preferencias alimenticias, estilo de vida, nivel de actividad física y necesidades específicas. Cada plan es diseñado exclusivamente para ti.'
+    },
+    {
+      q: '¿Necesito hacer ejercicio obligatoriamente?',
+      a: 'Aunque el ejercicio es beneficioso, el programa puede adaptarse para obtener resultados con cambios en la alimentación únicamente.'
+    },
+    {
+      q: '¿Puedo comer fuera o tener comidas libres?',
+      a: 'Sí, se ofrecen estrategias para mantener el equilibrio mientras disfrutas de ocasiones especiales o comidas fuera de casa.'
+    },
+    {
+      q: '¿Cuánto tiempo toma ver resultados?',
+      a: 'Los resultados varían según la constancia y el objetivo, pero generalmente se observan cambios en las primeras 4-6 semanas.'
+    },
+    {
+      q: '¿Es un programa restrictivo?',
+      a: 'No, se busca un enfoque equilibrado, incluyendo alimentos que disfrutes y que sean sostenibles a largo plazo. Habrá flexibilidad y ajustes. Lo importante es progresar de manera consistente, no ser perfecto.'
+    },
+    {
+      q: '¿Cómo se realiza el seguimiento?',
+      a: 'A través de consultas regulares (presenciales o en línea), revisiones del progreso y ajustes del plan según tus necesidades.'
+    },
+    {
+      q: '¿Puedo llevar el programa desde otra ciudad o país?',
+      a: 'Sí, las asesorías online están disponibles para pacientes de cualquier parte del mundo. Estés donde estés, cuentas con Francisco en cada momento.'
+    }
+  ];
+
+  var faqList = document.getElementById('faq-list');
+  faqData.forEach(function(item, i) {
+    var wrapper = document.createElement('div');
+    wrapper.className = 'bg-white rounded-2xl border border-sage-100 overflow-hidden card-hover reveal delay-' + (Math.min(i + 1, 5));
+    wrapper.innerHTML =
+      '<button class="w-full flex items-center justify-between p-5 text-left gap-4 faq-trigger">' +
+        '<span class="font-semibold text-charcoal text-sm">' + item.q + '</span>' +
+        '<span class="faq-icon w-7 h-7 rounded-full bg-sage-50 flex items-center justify-center text-sage-600 text-lg flex-shrink-0">+</span>' +
+      '</button>' +
+      '<div class="faq-answer px-5 text-charcoal/60 text-sm leading-relaxed">' +
+        '<div class="pb-5">' + item.a + '</div>' +
+      '</div>';
+    faqList.appendChild(wrapper);
+    revealObserver.observe(wrapper);
+
+    var trigger = wrapper.querySelector('.faq-trigger');
+    var answer  = wrapper.querySelector('.faq-answer');
+    var icon    = wrapper.querySelector('.faq-icon');
+
+    trigger.addEventListener('click', function() {
+      var isOpen = answer.classList.contains('open');
+      // Close all others
+      document.querySelectorAll('.faq-answer.open').forEach(function(a) { a.classList.remove('open'); });
+      document.querySelectorAll('.faq-icon.open').forEach(function(ic) { ic.classList.remove('open'); });
+      if (!isOpen) {
+        answer.classList.add('open');
+        icon.classList.add('open');
+      }
+    });
+  });
+
+  /* ---- QUIZ ---- */
+  var quizAnswers  = {};
+  var currentStep  = 1;
+  var totalSteps   = 3;
+
+  var plans = {
+    'perder-peso': {
+      title:    'Plan para Bajar de Peso',
+      emoji:    '🔥',
+      features: ['Baja % de grasa corporal', 'Control de peso efectivo', 'Mejora de energía', 'Programa de ejercicios', 'Dieta Anti-inflamatoria'],
+      link:     'https://consultasnutricion.com.mx/product/programa-2/',
+      bg:       '#f4f7f4',
+      color:    '#2d452d'
+    },
+    'ganar-musculo': {
+      title:    'Plan Aumento Muscular',
+      emoji:    '💪',
+      features: ['Aumenta masa muscular', 'Mejora de resistencia física', 'Recomendaciones en suplementación', 'Programa de ejercicios en gimnasio', 'Dieta alta en proteínas'],
+      link:     'https://consultasnutricion.com.mx/product/programa-aumenta-masa-muscular/',
+      bg:       '#1a2e1a',
+      color:    '#ffffff'
+    },
+    'mejorar-salud': {
+      title:    'Asesoría Personalizada 1:1',
+      emoji:    '❤️',
+      features: ['Evaluación nutricional completa', 'Plan alimenticio adaptado', 'Seguimiento continuo', 'Asesoría privada online', 'Ajustes según tu progreso'],
+      link:     'https://consultasnutricion.com.mx/asesoria-personalizada/',
+      bg:       '#f9f0e1',
+      color:    '#1a1a1a'
+    },
+    'plan-personalizado': {
+      title:    'Asesoría Personalizada 1:1',
+      emoji:    '🎯',
+      features: ['Evaluación nutricional completa', 'Plan 100% a tu medida', 'Seguimiento continuo online', 'Acceso a grupos de apoyo', 'Coaching y motivación continua'],
+      link:     'https://consultasnutricion.com.mx/asesoria-personalizada/',
+      bg:       '#f9f0e1',
+      color:    '#1a1a1a'
+    }
+  };
+
+  function updateProgress() {
+    var pct = Math.round((currentStep / totalSteps) * 100);
+    document.getElementById('quiz-progress').style.width = pct + '%';
+    document.getElementById('quiz-step-label').textContent = 'Paso ' + currentStep + ' de ' + totalSteps;
+  }
+
+  function showStep(step) {
+    for (var s = 1; s <= totalSteps; s++) {
+      var el = document.getElementById('q' + s);
+      if (el) { el.classList.add('hidden'); }
+    }
+    var target = document.getElementById('q' + step);
+    if (target) {
+      target.classList.remove('hidden');
+    }
+    currentStep = step;
+    updateProgress();
+  }
+
+  function showResult() {
+    for (var s = 1; s <= totalSteps; s++) {
+      var el = document.getElementById('q' + s);
+      if (el) { el.classList.add('hidden'); }
+    }
+    document.getElementById('quiz-progress').style.width = '100%';
+    document.getElementById('quiz-step-label').textContent = '¡Listo!';
+
+    var goal = quizAnswers['1'] || 'perder-peso';
+    var plan = plans[goal] || plans['perder-peso'];
+
+    var rec  = document.getElementById('quiz-recommendation');
+    var fStr = plan.features.map(function(f) {
+      return '<li class="flex items-center gap-2 text-xs" style="color:' + (plan.color === '#ffffff' ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)') + '">' +
+             '<span style="color:' + (plan.color === '#ffffff' ? '#daa95e' : '#456b45') + '">✓</span>' + f + '</li>';
+    }).join('');
+
+    rec.innerHTML =
+      '<div style="background:' + plan.bg + ';padding:20px;border-radius:16px;">' +
+        '<div style="font-size:32px;margin-bottom:8px;">' + plan.emoji + '</div>' +
+        '<h4 style="font-family:\'Playfair Display\',serif;font-size:18px;font-weight:700;color:' + plan.color + ';margin-bottom:12px;">' + plan.title + '</h4>' +
+        '<ul style="list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:6px;">' + fStr + '</ul>' +
+        '<a href="' + plan.link + '" target="_blank" rel="noopener" class="btn-primary" style="width:100%;justify-content:center;display:flex;text-decoration:none;">Ver este plan →</a>' +
+      '</div>';
+
+    document.getElementById('q-result').classList.remove('hidden');
+  }
+
+  document.querySelectorAll('.quiz-option').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var q   = this.getAttribute('data-q');
+      var val = this.getAttribute('data-val');
+      quizAnswers[q] = val;
+
+      // Visual feedback
+      var siblings = document.querySelectorAll('[data-q="' + q + '"]');
+      siblings.forEach(function(s) { s.classList.remove('selected'); });
+      this.classList.add('selected');
+
+      // Advance after short delay
+      setTimeout(function() {
+        var next = parseInt(q, 10) + 1;
+        if (next <= totalSteps) {
+          showStep(next);
+        } else {
+          showResult();
+        }
+      }, 380);
+    });
+  });
+
+  var restartBtn = document.getElementById('quiz-restart');
+  if (restartBtn) {
+    restartBtn.addEventListener('click', function() {
+      quizAnswers  = {};
+      currentStep  = 1;
+      document.getElementById('q-result').classList.add('hidden');
+      document.querySelectorAll('.quiz-option').forEach(function(b) { b.classList.remove('selected'); });
+      showStep(1);
+    });
+  }
+
+  updateProgress();
+
+  /* ---- Contact form → WhatsApp ---- */
+  var contactSubmit = document.getElementById('contact-submit');
+  if (contactSubmit) {
+    contactSubmit.addEventListener('click', function() {
+      var name    = (document.getElementById('contact-name').value    || '').trim();
+      var email   = (document.getElementById('contact-email').value   || '').trim();
+      var message = (document.getElementById('contact-message').value || '').trim();
+
+      if (!name || !message) {
+        alert('Por favor completa al menos tu nombre y mensaje.');
+        return;
+      }
+
+      var text = 'Hola Francisco, mi nombre es ' + name + '.' +
+                 (email ? ' Mi correo es ' + email + '.' : '') +
+                 ' ' + message;
+      var url  = 'https://wa.me/5219841984819?text=' + encodeURIComponent(text);
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+
+  /* ---- Hero reveal on load ---- */
+  window.addEventListener('load', function() {
+    var heroEls = document.querySelectorAll('#inicio .reveal, #inicio .reveal-left, #inicio .reveal-right');
+    heroEls.forEach(function(el, i) {
+      setTimeout(function() {
+        el.classList.add('visible');
+      }, i * 120);
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
